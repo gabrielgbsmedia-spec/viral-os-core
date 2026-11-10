@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     environment:
       # ===== Required =====
-      APP_NAME: TryPost
+      APP_NAME: ViralOS
       APP_ENV: production
       APP_DEBUG: "false"
       APP_KEY: ""                       # <- run key:generate (see header) and paste here
@@ -83,7 +83,7 @@ services:
       # for real password-reset / team-invite emails.
       MAIL_MAILER: log
       MAIL_FROM_ADDRESS: hello@example.com
-      MAIL_FROM_NAME: TryPost
+      MAIL_FROM_NAME: ViralOS
       # MAIL_MAILER: smtp
       # MAIL_HOST: ""
       # MAIL_PORT: "587"
