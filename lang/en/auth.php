@@ -20,8 +20,8 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     'flash' => [
-        'welcome' => 'Welcome to TryPost!',
-        'welcome_trial' => 'Welcome to TryPost! Your trial has started.',
+        'welcome' => 'Welcome to ViralOS!',
+        'welcome_trial' => 'Welcome to ViralOS! Your trial has started.',
     ],
 
     'legal' => 'By continuing, you agree to our <a href=":terms_url" target="_blank">Terms of Service</a> and <a href=":privacy_url" target="_blank">Privacy Policy</a>.',
@@ -35,7 +35,7 @@ return [
         ],
         'diego' => [
             'role' => 'CEO, Globalfy.com',
-            'quote' => 'I like how easy TryPost is to use. I can create a post directly in Claude, then use the MCP to publish it and schedule it for the future. I set it up in five minutes.',
+            'quote' => 'I like how easy ViralOS is to use. I can create a post directly in Claude, then use the MCP to publish it and schedule it for the future. I set it up in five minutes.',
         ],
         'luiz' => [
             'role' => 'Content Creator',
@@ -60,7 +60,7 @@ return [
     'github_email_unavailable' => 'Unable to retrieve your email from GitHub. Make your GitHub email public or grant the email scope, then try again.',
 
     'login' => [
-        'title' => 'Log in to TryPost',
+        'title' => 'Log in to ViralOS',
         'page_title' => 'Log in',
         'email' => 'Email address',
         'password' => 'Password',
@@ -74,7 +74,7 @@ return [
     ],
 
     'register' => [
-        'title' => 'Create a TryPost account',
+        'title' => 'Create a ViralOS account',
         'page_title' => 'Register',
         'name' => 'Name',
         'name_placeholder' => 'Full name',
