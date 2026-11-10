@@ -1,7 +1,6 @@
 <script setup lang="ts">
 withDefaults(
     defineProps<{
-        /** `full` is the mark and the "trypost.it" wordmark, `mark` the round mark alone. */
         variant?: 'full' | 'mark';
     }>(),
     { variant: 'full' },
@@ -10,25 +9,29 @@ withDefaults(
 
 <template>
     <span
-        class="inline-flex shrink-0 items-center gap-[0.32em] font-logo leading-none font-bold tracking-[-0.01em] text-foreground"
+        class="inline-flex shrink-0 items-center gap-[0.42em] font-logo leading-none font-bold tracking-[-0.02em] text-foreground"
         role="img"
-        aria-label="TryPost"
+        aria-label="ViralOS"
         data-testid="app-logo"
     >
         <svg
-            viewBox="0 0 410 410"
-            class="size-[1.15em] shrink-0 [clip-path:circle(50%)]"
+            viewBox="0 0 40 40"
+            class="size-[1.2em] shrink-0"
             aria-hidden="true"
         >
-            <rect width="410" height="410" class="fill-white dark:fill-[#040000]" />
-            <path d="M410 109.736V410H128.863L410 109.736Z" fill="#3660E0" />
-            <path d="M410 0H281.138L205 81.3178L410 300.264V0Z" fill="#855ED4" />
-            <path d="M0 0V300.264L205 81.3178L281.138 0H0Z" fill="#FFCC33" />
+            <defs>
+                <linearGradient id="viralos-gradient" x1="4" y1="4" x2="36" y2="36">
+                    <stop offset="0%" stop-color="#7C3AED" />
+                    <stop offset="55%" stop-color="#4F46E5" />
+                    <stop offset="100%" stop-color="#06B6D4" />
+                </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="36" height="36" rx="11" fill="url(#viralos-gradient)" />
             <path
-                d="M0 109.736V410H128.862L205 328.682L0 109.736Z"
-                fill="#F39200"
+                d="M10.5 12.5L18.2 28H21.8L29.5 12.5H25.1L20 23.4L14.9 12.5H10.5Z"
+                fill="white"
             />
         </svg>
-        <span v-if="variant === 'full'" aria-hidden="true">trypost.it</span>
+        <span v-if="variant === 'full'" aria-hidden="true">ViralOS</span>
     </span>
 </template>
