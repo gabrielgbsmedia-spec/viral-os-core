@@ -15,7 +15,6 @@ import { computed, ref } from 'vue';
 
 import { index as postsIndex } from '@/actions/App/Http/Controllers/App/PostController';
 import AppLogo from '@/components/AppLogo.vue';
-import ChangelogCard from '@/components/changelog/ChangelogCard.vue';
 import InviteMemberDialog from '@/components/members/InviteMemberDialog.vue';
 import NavChannels from '@/components/NavChannels.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -76,7 +75,7 @@ const mainNavItems = computed<NavItem[]>(() => [
     ...(canCreatePost.value
         ? [
               {
-                  title: trans('sidebar.create'),
+                  title: 'Criar',
                   href: ideasIndex.url(),
                   icon: IconBulb,
                   activePattern: '/create',
@@ -84,21 +83,21 @@ const mainNavItems = computed<NavItem[]>(() => [
           ]
         : []),
     {
-        title: trans('sidebar.groups.posts'),
+        title: 'Conteúdo',
         href: postsIndex.url(),
         icon: IconCalendarEvent,
         count: scheduledPostsCount.value,
         countTestId: 'sidebar-publish-count',
     },
     {
-        title: trans('channels.insights'),
+        title: 'Performance',
         href: insights.url(),
         icon: IconTrendingUp,
     },
     ...(canManageRepurposes.value
         ? [
               {
-                  title: trans('sidebar.repurposes'),
+                  title: 'Reaproveitar',
                   href: repurposes.url(),
                   icon: IconRepeat,
               },
@@ -236,7 +235,6 @@ const mainNavItems = computed<NavItem[]>(() => [
             <NavChannels v-if="currentWorkspace" />
         </SidebarContent>
         <SidebarFooter class="gap-0 p-0">
-            <ChangelogCard />
             <SidebarUserMenu />
         </SidebarFooter>
 
