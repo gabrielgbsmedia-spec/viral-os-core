@@ -13,9 +13,11 @@ return new class extends Migration
     {
         DB::table('post_notes')->whereNotNull('parent_id')->update(['parent_id' => null]);
 
-        Schema::table('post_notes', function (Blueprint $table) {
-            $table->dropForeign('post_comments_parent_id_foreign');
-        });
+        if (DB::getDriverName() !== 'sqlite') {
+            Schema::table('post_notes', function (Blueprint $table) {
+                $table->dropForeign('post_comments_parent_id_foreign');
+            });
+        }
 
         Schema::table('post_notes', function (Blueprint $table) {
             $table->dropColumn(['parent_id', 'reactions']);
@@ -29,11 +31,13 @@ return new class extends Migration
             $table->json('reactions')->nullable()->after('body');
         });
 
-        Schema::table('post_notes', function (Blueprint $table) {
-            $table->foreign('parent_id', 'post_comments_parent_id_foreign')
-                ->references('id')
-                ->on('post_notes')
-                ->cascadeOnDelete();
-        });
+        if (DB::getDriverName() !== 'sqlite') {
+            Schema::table('post_notes', function (Blueprint $table) {
+                $table->foreign('parent_id', 'post_comments_parent_id_foreign')
+                    ->references('id')
+                    ->on('post_notes')
+                    ->cascadeOnDelete();
+            });
+        }
     }
 };
