@@ -5,11 +5,8 @@ import { computed } from 'vue';
 
 import AppLogo from '@/components/AppLogo.vue';
 import LanguageSelect from '@/components/LanguageSelect.vue';
-import G2ReviewsLink from '@/components/reviews/G2ReviewsLink.vue';
-import ReviewCard from '@/components/reviews/ReviewCard.vue';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useGuestLocale } from '@/composables/useGuestLocale';
-import { REVIEWS } from '@/lib/reviews';
 import type { Auth } from '@/types';
 
 const widthClass = {
@@ -39,18 +36,6 @@ const page = usePage();
 const isGuest = computed(() => !(page.props.auth as Auth).user);
 const { locale, languages } = useGuestLocale();
 
-const reviews = REVIEWS.map((review, index) => ({
-    ...review,
-    rotation: index % 2 === 0 ? '-rotate-1' : 'rotate-1',
-}));
-
-// The marquee scrolls one full copy of the list, so a second copy fills the gap
-// it leaves behind. Both copies must render identically for the loop to be
-// seamless, hence the rotation living on the review rather than on the index.
-const loopedReviews = [
-    ...reviews.map((review) => ({ ...review, duplicate: false })),
-    ...reviews.map((review) => ({ ...review, duplicate: true })),
-];
 </script>
 
 <template>
@@ -130,35 +115,29 @@ const loopedReviews = [
             class="hidden p-8 ps-0 lg:sticky lg:top-0 lg:block lg:h-svh lg:self-start"
         >
             <div
-                class="relative flex h-full flex-col items-center overflow-hidden rounded-[20px] bg-primary-subtle px-12 pt-14 text-center xl:px-16"
+                class="relative flex h-full flex-col justify-between overflow-hidden rounded-[20px] bg-primary-subtle p-12"
             >
-
-                <h2
-                    class="motion-auth-reveal max-w-lg font-heading text-[clamp(30px,3.2vw,48px)] leading-[1.12] font-normal tracking-[-0.03em] text-balance text-foreground"
-                >
-                    {{ $t('auth.reviews.heading') }}
-                </h2>
-
-                <div
-                    class="motion-auth-fade relative mt-10 min-h-0 w-full flex-1 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_82%,transparent)]"
-                >
-                    <div
-                        class="marquee mx-auto flex w-full max-w-md flex-col gap-4 text-start"
-                        data-testid="auth-reviews"
-                    >
-                        <ReviewCard
-                            v-for="(review, index) in loopedReviews"
-                            :key="`${review.key}-${index}`"
-                            :review="review"
-                            :class="review.rotation"
-                            :aria-hidden="review.duplicate"
-                        />
-                    </div>
+                <div>
+                    <AppLogo class="text-[30px]" />
                 </div>
-                <G2ReviewsLink
-                    class="motion-auth-fade my-6"
-                    data-testid="auth-reviews-g2-link"
-                />
+
+                <div class="max-w-xl">
+                    <p class="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-primary-text">
+                        Conteúdo em escala
+                    </p>
+                    <h2
+                        class="font-heading text-[clamp(34px,3.6vw,56px)] leading-[1.06] font-medium tracking-[-0.04em] text-balance text-foreground"
+                    >
+                        Crie, organize, agende e publique em todas as suas redes.
+                    </h2>
+                    <p class="mt-5 max-w-lg text-base leading-7 text-muted-foreground">
+                        Um único sistema para conteúdo, calendário, filas, automações, IA e performance.
+                    </p>
+                </div>
+
+                <p class="text-sm text-muted-foreground">
+                    ViralOS
+                </p>
             </div>
         </div>
     </div>
